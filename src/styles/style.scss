@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
-$primary : #efb6b2;
-$secondary : #4e4e4e;
+$primary: #efb6b2;
+$secondary: #4e4e4e;
 $error: #ff4a4a;
 
-body{
+body {
   font-family: "Noto Serif";
   color: $secondary;
 }
-.App{
+
+.App {
   max-width: 960px;
   margin: 0 auto;
 }
+
 .title {
   h1 {
     color: $primary;
@@ -19,11 +21,112 @@ body{
     letter-spacing: 2px;
     font-weight: normal;
   }
-  h2{
+
+  h2 {
     margin-top: 60px;
     font-size: 2.6rem;
   }
-  h2, p{
+
+  h2, p {
     text-align: center;
   }
 }
+
+/* upload form styles */
+form {
+  margin: 30px auto 10px;
+  text-align: center;
+}
+
+
+
+label {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid $primary;
+  border-radius: 50%;
+  margin: 10px auto;
+  line-height: 30px;
+  color: $primary;
+  font-weight: bold;
+  font-size: 24px;
+
+  &:hover {
+    background: $primary;
+    color: white;
+  }
+
+  input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+  }
+
+}
+
+
+
+.output {
+  height: 60px;
+  font-size: 0.8rem;
+}
+
+.error {
+  color: $error;
+}
+
+/* progress bar styles */
+.progress-bar {
+  height: 5px;
+  background: $primary;
+  margin-top: 20px;
+}
+
+/* image grid styles */
+.img-grid {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+}
+
+.img-wrap {
+  overflow: hidden;
+  height: 0;
+  padding: 50% 0;
+  /* padding controls height, will always be perfectly square regardless of width */
+  position: relative;
+  opacity: 0.8;
+
+  img {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 150%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+/* modal styles */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  img {
+    display: block;
+    max-width: 60%;
+    max-height: 80%;
+    margin: 60px auto;
+    box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+    border: 3px solid white;
+  }
+
+}
+
