@@ -15,14 +15,17 @@ function UploadForm(props) {
             setFile(selected);
         } else {
             setFile(null);
-            setError("Please select an image png/jpeg file.")
+            setError("Please select an image png/jpeg/jpg file.")
         }
 
     }
 
     return (
         <form action="">
-            <input type="file" onChange={changeHandler}/>
+            <label>
+                <input type="file" onChange={changeHandler} />
+                <span>+</span>
+            </label>
             <div className="output">
                 {error && <div className="error">{error}</div>}
                 {!error && file && <div>{file.name}</div>}
