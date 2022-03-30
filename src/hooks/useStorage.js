@@ -1,25 +1,30 @@
 import {useState, useEffect} from "react";
 import {storage} from "../config/firebaseConfig";
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 
 const useStorage = (file) => {
     const [progress, setProgress] = useState(0);
     const [error, setError] = useState(null);
     const [url, setUrl] = useState(null);
+    const [filename, setFilename] = useState(file.name);
 
     useEffect(() => {
-        const storageRef = ref(storage, file.name);
-        uploadBytes(storageRef, file)
-            .then((snap) => {
+        let name = new Date().toString() + "-" + file.name;
+        const storageRef = ref(storage, name);
+        setFilename(name);
+        uploadBytesResumable(storageRef, file)
+            .on('state_changed', (snap) => {
                 let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
                 setProgress(percentage);
-                getDownloadURL(storageRef).then(url => {setUrl(url);})
-            }).catch((err) => {
+            }, (err) => {
                 setError(err)
+            }, async () => {
+                const url = await getDownloadURL(storageRef);
+                setUrl(url);
             })
 
     }, [file])
-    return {progress, url, error}
+    return {progress, url, error, filename}
 }
 
 export default useStorage;

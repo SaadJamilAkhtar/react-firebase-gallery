@@ -7,7 +7,7 @@ function ProgressBar({file, setFile}) {
 
     return (
         <div className="progress-bar">
-            Progress
+            {progress}
         </div>
     );
 }
