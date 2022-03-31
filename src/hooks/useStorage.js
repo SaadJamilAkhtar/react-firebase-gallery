@@ -1,7 +1,8 @@
 import {useState, useEffect} from "react";
 import {storage, db} from "../config/firebaseConfig";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
-import {collection, addDoc, serverTimestamp, updateDoc, getDocs} from "firebase/firestore";
+import {setDoc, serverTimestamp, doc} from "firebase/firestore";
+import {sha256} from 'crypto-hash';
 
 const useStorage = (file) => {
     const [progress, setProgress] = useState(0);
@@ -22,16 +23,15 @@ const useStorage = (file) => {
             }, async () => {
                 const url = await getDownloadURL(storageRef);
                 try {
-                    const docRef = collection(db, "images");
-                    const doc = await addDoc(docRef, {
-                        url
+                    const id = await sha256(url);
+                    console.log(id)
+                    const docRef = await setDoc(doc(db, "images", id), {
+                        url,
+                        createdAt: serverTimestamp()
                     });
 
-                    const updateTimestamp = await updateDoc(doc, {
-                        timestamp: serverTimestamp()
-                    });
 
-                    console.log("Document written with ID: ", doc.id);
+                    console.log("Document written with ID: ", docRef.id);
                 } catch (e) {
                     console.error("Error adding document: ", e);
                 }
