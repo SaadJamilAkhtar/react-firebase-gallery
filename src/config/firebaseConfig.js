@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app, 'gs://react-gallery-f873c.appspot.com');
+const storage = getStorage(app, process.env.bucket);
 const db = getFirestore(app);
 
 export {storage, db}
