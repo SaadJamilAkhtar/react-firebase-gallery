@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import {storage, db} from "../config/firebaseConfig";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
-import {setDoc, serverTimestamp, doc} from "firebase/firestore";
+import {collection, serverTimestamp, addDoc} from "firebase/firestore";
 import {sha256} from 'crypto-hash';
 
 const useStorage = (file) => {
@@ -23,9 +23,7 @@ const useStorage = (file) => {
             }, async () => {
                 const url = await getDownloadURL(storageRef);
                 try {
-                    const id = await sha256(url);
-                    console.log(id)
-                    const docRef = await setDoc(doc(db, "images", id), {
+                    const docRef = await addDoc(collection(db, "images"), {
                         url,
                         createdAt: serverTimestamp()
                     });
