@@ -2,14 +2,14 @@ import {useEffect, useState} from "react";
 import {db} from "../config/firebaseConfig";
 import {collection, getDocs, query, orderBy, onSnapshot} from "firebase/firestore";
 
-const useFirestore = (collection) => {
+const useFirestore = (collectionName) => {
     const [docs, setDocs] = useState([]);
 
 
     useEffect(() => {
-        const q = query(collection(db, "cities"), orderBy("createdAt", 'desc'));
+        let documents = [];
+        const q = query(collection(db, collectionName), orderBy("createdAt", 'desc'));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            let documents = [];
             querySnapshot.forEach(doc => {
                 documents.push({
                     ...doc.data(),
@@ -17,8 +17,10 @@ const useFirestore = (collection) => {
                 });
             });
         });
-        setDocs(document);
+        setDocs(documents);
 
+
+        return () => unsubscribe()
     }, [collection])
 
     return {docs}
