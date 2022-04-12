@@ -9,7 +9,7 @@ window.env = {
   "CONDA_SHLVL": "1",
   "CONDA_PROMPT_MODIFIER": "(base) ",
   "COLOR": "1",
-  "TERM_SESSION_ID": "078d0750-0dd4-478b-93f5-0aaf334c9a92",
+  "TERM_SESSION_ID": "3831d86e-0577-4800-bfc4-1b7ffb4efa9f",
   "npm_config_noproxy": "",
   "npm_config_local_prefix": "/Users/muhammadsaadjamil/Desktop/react-gallery",
   "__INTELLIJ_COMMAND_HISTFILE__": "/Users/muhammadsaadjamil/Library/Caches/JetBrains/WebStorm2021.2/terminal/history/react-gallery-history",
