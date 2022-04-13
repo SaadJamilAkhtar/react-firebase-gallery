@@ -5,7 +5,6 @@ import {collection, getDocs, query, orderBy, onSnapshot} from "firebase/firestor
 const useFirestore = (collectionName) => {
     const [docs, setDocs] = useState([]);
 
-
     useEffect(() => {
         let documents = [];
         const q = query(collection(db, collectionName), orderBy("createdAt", 'desc'));
@@ -16,10 +15,8 @@ const useFirestore = (collectionName) => {
                     id: doc.id
                 });
             });
+            setDocs(documents);
         });
-        setDocs(documents);
-
-
         return () => unsubscribe()
     }, [collectionName])
 
