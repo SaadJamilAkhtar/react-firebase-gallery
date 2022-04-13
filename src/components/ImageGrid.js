@@ -11,10 +11,11 @@ function ImageGrid({updateImg}) {
 
     if (loading) {
         return (
-            <div className={'loading'}>
-                <h1>
-                    Loading Gallery...
-                </h1>
+            <div className={'backdrop'}>
+                <div className="loading">
+                    <div className="ring"></div>
+                </div>
+
             </div>
         )
     }
