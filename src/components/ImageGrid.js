@@ -3,15 +3,27 @@ import {collection, orderBy, query} from "firebase/firestore";
 import {db} from "../config/firebaseConfig";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 
-function ImageGrid(props) {
+function ImageGrid({updateImg}) {
     // get data using react-firebase-hooks
     const imagesRef = collection(db, 'images');
     const q = query(imagesRef, orderBy("createdAt", 'desc'));
-    const [images] = useCollectionData(q);
+    const [images, loading] = useCollectionData(q);
+
+    if (loading) {
+        return (
+            <div className={'loading'}>
+                <h1>
+                    Loading Gallery...
+                </h1>
+            </div>
+        )
+    }
     return (
         <div className={'img-grid'}>
             {images && images.map(img => (
-                <div className={'img-wrap'} key={img.id}>
+                <div className={'img-wrap'} key={img.id}
+                     onClick={() => updateImg(img.url)}
+                >
                     <img src={img.url} alt="IMG"/>
                 </div>
             ))}
