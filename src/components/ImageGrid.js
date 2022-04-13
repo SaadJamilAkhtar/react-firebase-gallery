@@ -4,6 +4,7 @@ import {db} from "../config/firebaseConfig";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 
 function ImageGrid(props) {
+    // get data using react-firebase-hooks
     const imagesRef = collection(db, 'images');
     const q = query(imagesRef, orderBy("createdAt", 'desc'));
     const [images] = useCollectionData(q);
