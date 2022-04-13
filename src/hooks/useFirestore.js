@@ -21,9 +21,9 @@ const useFirestore = (collectionName) => {
 
 
         return () => unsubscribe()
-    }, [collection])
+    }, [collectionName])
 
     return {docs}
 }
 
-export default useFirestore
+export default useFirestore;
