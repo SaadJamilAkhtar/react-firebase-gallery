@@ -2,7 +2,7 @@ import './styles/style.css'
 import Title from "./components/Title";
 import UploadForm from "./components/UploadForm";
 import ImageGrid from "./components/ImageGrid";
-import Model from "./components/Model";
+import Modal from "./components/Modal";
 import {useState} from "react";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
             <Title/>
             <UploadForm/>
             <ImageGrid updateImg={setImg}/>
-            {img && <Model url={img} updateImg={setImg}/>}
+            {img && <Modal url={img} updateImg={setImg}/>}
         </div>
     );
 }

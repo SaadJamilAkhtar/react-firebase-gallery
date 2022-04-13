@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Model(props) {
+function Modal(props) {
     return (
         <div className={'backdrop'} onClick={() => props.updateImg(null)}>
             <img src={props.url} alt="IMG"/>
@@ -8,4 +8,4 @@ function Model(props) {
     );
 }
 
-export default Model;
+export default Modal;
