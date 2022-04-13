@@ -1,11 +1,15 @@
 import React from 'react';
-import useFirestore from "../hooks/useFirestore";
+import {collection, orderBy, query} from "firebase/firestore";
+import {db} from "../config/firebaseConfig";
+import {useCollectionData} from "react-firebase-hooks/firestore";
 
 function ImageGrid(props) {
-    const {docs} = useFirestore('images');
+    const imagesRef = collection(db, 'images');
+    const q = query(imagesRef, orderBy("createdAt", 'desc'));
+    const [images] = useCollectionData(q);
     return (
         <div className={'img-grid'}>
-            {docs && docs.map(img => (
+            {images && images.map(img => (
                 <div className={'img-wrap'} key={img.id}>
                     <img src={img.url} alt="IMG"/>
                 </div>
