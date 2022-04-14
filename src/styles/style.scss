@@ -97,6 +97,10 @@ label {
   position: relative;
   opacity: 0.8;
 
+  &:hover{
+    opacity: 1;
+  }
+
   img {
     min-width: 100%;
     min-height: 100%;

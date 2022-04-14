@@ -25,9 +25,6 @@ function ImageGrid({updateImg}) {
             {images && images.map(img => (
                 <motion.div
                     className={'img-wrap'}
-                    whileHover={{
-                        opacity: 1
-                    }}
                     layoutTransition
                     key={img.url}
                     transition={{delay: 1}}

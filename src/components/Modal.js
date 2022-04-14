@@ -6,7 +6,7 @@ function Modal(props) {
         <motion.div
             className={'backdrop'}
             onClick={(e) => {
-                if (e.target.classList.contains('backdrop')) {
+                if (e.target.classList.contains('backdrop') || e.target.classList.contains('center-content')) {
                     props.updateImg(null);
                 }
             }}
