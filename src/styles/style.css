@@ -134,5 +134,22 @@ label input {
     transform: rotate(360deg);
   }
 }
+.center-content {
+  display: flex;
+  justify-content: center;
+}
+.center-content .del {
+  font-size: 1.25rem;
+  border: 2px solid red;
+  padding: 1rem 5rem 1rem 5rem;
+  border-radius: 2rem;
+  color: white;
+  background: red;
+  opacity: 0.8;
+}
+.center-content .del:hover {
+  opacity: 1;
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=style.css.map */
