@@ -2,6 +2,7 @@ import React from 'react';
 import {collection, orderBy, query} from "firebase/firestore";
 import {db} from "../config/firebaseConfig";
 import {useCollectionData} from "react-firebase-hooks/firestore";
+import {motion} from "framer-motion";
 
 function ImageGrid({updateImg}) {
     // get data using react-firebase-hooks
@@ -22,11 +23,23 @@ function ImageGrid({updateImg}) {
     return (
         <div className={'img-grid'}>
             {images && images.map(img => (
-                <div className={'img-wrap'} key={img.id}
+                <motion.div
+                    className={'img-wrap'}
+                    whileHover={{
+                        opacity: 1
+                    }}
+                    key={img.id}
                      onClick={() => updateImg(img.url)}
                 >
-                    <img src={img.url} alt="IMG"/>
-                </div>
+                    <motion.img
+                        src={img.url} alt="IMG"
+                        initial={{
+                            opacity: 0
+                        }}
+                        animate={{opacity: 1}}
+                        transition={{delay:1}}
+                    />
+                </motion.div>
             ))}
         </div>
     );
