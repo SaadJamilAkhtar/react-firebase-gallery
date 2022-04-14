@@ -4,7 +4,6 @@ import UploadForm from "./components/UploadForm";
 import ImageGrid from "./components/ImageGrid";
 import Modal from "./components/Modal";
 import {useState} from "react";
-import {motion} from "framer-motion";
 
 function App() {
     const [img, setImg] = useState(null);
@@ -12,10 +11,7 @@ function App() {
         <div className="App">
             <Title/>
             <UploadForm/>
-            <motion.div layoutTransition>
-                <ImageGrid updateImg={setImg}/>
-            </motion.div>
-
+            <ImageGrid updateImg={setImg}/>
             {img && <Modal url={img} updateImg={setImg}/>}
         </div>
     );

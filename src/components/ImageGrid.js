@@ -28,16 +28,19 @@ function ImageGrid({updateImg}) {
                     whileHover={{
                         opacity: 1
                     }}
-                    key={img.id}
-                     onClick={() => updateImg(img.url)}
+                    layoutTransition
+                    key={img.url}
+                    transition={{delay: 1}}
+                    onClick={() => updateImg(img.url)}
                 >
                     <motion.img
+                        layoutTransition
                         src={img.url} alt="IMG"
                         initial={{
                             opacity: 0
                         }}
                         animate={{opacity: 1}}
-                        transition={{delay:1}}
+                        transition={{delay: 2}}
                     />
                 </motion.div>
             ))}
