@@ -12,7 +12,7 @@ function App() {
             <Title/>
             <UploadForm/>
             <ImageGrid updateImg={setImg}/>
-            {img && <Modal url={img} updateImg={setImg}/>}
+            {img && <Modal img={img} updateImg={setImg}/>}
         </div>
     );
 }

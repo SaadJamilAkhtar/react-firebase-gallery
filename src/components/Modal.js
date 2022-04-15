@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {motion} from "framer-motion";
+import {deleteDoc, doc} from "firebase/firestore";
+import {db, storage} from "../config/firebaseConfig";
+import {deleteObject, ref} from "firebase/storage";
 
 function Modal(props) {
+
+    const deleteImg = async (img) => {
+        const imgRef = ref(storage, img.name);
+        try {
+            await deleteObject(imgRef)
+            await deleteDoc(doc(db, "images", img.id));
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+
     return (
         <motion.div
             className={'backdrop'}
@@ -14,13 +29,16 @@ function Modal(props) {
             animate={{opacity: 1}}
         >
             <motion.img
-                src={props.url}
+                src={props.img.url}
                 alt="IMG"
                 initial={{y: "-100vh"}}
                 animate={{y: "0vh"}}
             />
             <div className="center-content">
-                <button className="del">Delete</button>
+                <button className="del" onClick={() => {
+                    deleteImg(props.img)
+                }}>Delete
+                </button>
             </div>
         </motion.div>
     );

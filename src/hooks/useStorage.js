@@ -25,7 +25,8 @@ const useStorage = (file) => {
                 try {
                     const docRef = await addDoc(collection(db, "images"), {
                         url,
-                        createdAt: serverTimestamp()
+                        createdAt: serverTimestamp(),
+                        name
                     });
 
 

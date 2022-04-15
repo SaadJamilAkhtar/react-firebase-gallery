@@ -9,6 +9,7 @@ function ImageGrid({updateImg}) {
     const imagesRef = collection(db, 'images');
     const q = query(imagesRef, orderBy("createdAt", 'desc'));
     const [images, loading] = useCollectionData(q);
+    console.log(images)
 
     if (loading) {
         return (
@@ -28,7 +29,7 @@ function ImageGrid({updateImg}) {
                     layoutTransition
                     key={img.url}
                     transition={{delay: 1}}
-                    onClick={() => updateImg(img.url)}
+                    onClick={() => updateImg(img)}
                 >
                     <motion.img
                         layoutTransition
