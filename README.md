@@ -12,3 +12,9 @@ A Gallery Application Using React and Firebase
 4. Install deps using `npm i`
 5. Run react app using `npm start`
 6. The app will start at `http://localhost:3000`
+
+___
+## Images:
+![IMG](https://github.com/SaadJamilAkhtar/Project-Images/blob/master/React-Gallery1.png?raw=true)
+![IMG](https://github.com/SaadJamilAkhtar/Project-Images/blob/master/React-Gallery2.png?raw=true)
+![IMG](https://github.com/SaadJamilAkhtar/Project-Images/blob/master/React-Gallery3.png?raw=true)
