@@ -17,7 +17,8 @@ function Modal(props) {
                 src={props.url}
                 alt="IMG"
                 initial={{y: "-100vh"}}
-                animate={{y: "0vh"}}/>
+                animate={{y: "0vh"}}
+            />
             <div className="center-content">
                 <button className="del">Delete</button>
             </div>
