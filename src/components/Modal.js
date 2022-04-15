@@ -3,17 +3,19 @@ import {motion} from "framer-motion";
 import {deleteDoc, doc} from "firebase/firestore";
 import {db, storage} from "../config/firebaseConfig";
 import {deleteObject, ref} from "firebase/storage";
+import {sha256} from "crypto-hash";
 
 function Modal(props) {
 
     const deleteImg = async (img) => {
         const imgRef = ref(storage, img.name);
         try {
+            await deleteDoc(doc(db, "images", await sha256(img.url)));
             await deleteObject(imgRef)
-            await deleteDoc(doc(db, "images", img.id));
         } catch (e) {
             console.log(e)
         }
+        props.updateImg(null);
     }
 
 
